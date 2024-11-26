@@ -1,6 +1,23 @@
-<h1><%= @task.title %></h1>
-
-<p><strong>Details:</strong> <%= @task.details %></p>
-<p><strong>Completed:</strong> <%= @task.completed ? "Yes" : "No" %></p>
-
-<%= link_to "Back to tasks", tasks_path %>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="h3 mb-0"><%= @task.title %></h1>
+        </div>
+        <div class="card-body">
+          <p><strong>Details:</strong> <%= @task.details %></p>
+          <p>
+            <strong>Status:</strong> 
+            <span class="badge <%= @task.completed ? 'bg-success' : 'bg-warning' %>">
+              <%= @task.completed ? 'Completed' : 'Not Completed' %>
+            </span>
+          </p>
+        </div>
+        <div class="card-footer">
+          <%= link_to "Back to tasks", tasks_path, class: "btn btn-secondary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,24 +1,34 @@
-<h1>New Task</h1>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="h3 mb-0">New Task</h1>
+        </div>
+        <div class="card-body">
+          <%= form_with model: @task, url: tasks_path, method: :post, local: true do |form| %>
+            <div class="mb-3">
+              <%= form.label :title, class: "form-label" %>
+              <%= form.text_field :title, required: true, class: "form-control" %>
+            </div>
 
-<%= form_with model: @task, url: tasks_path, method: :post, local: true do |form| %>
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title, required: true %>
+            <div class="mb-3">
+              <%= form.label :details, class: "form-label" %>
+              <%= form.text_area :details, required: true, class: "form-control" %>
+            </div>
+
+            <div class="mb-3 form-check">
+              <%= form.check_box :completed, class: "form-check-input" %>
+              <%= form.label :completed, class: "form-check-label" %>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <%= form.submit "Create Task", class: "btn btn-primary" %>
+              <%= link_to "Back to tasks", tasks_path, class: "btn btn-secondary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :details %>
-    <%= form.text_area :details, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :completed %>
-    <%= form.check_box :completed %>
-  </div>
-
-  <div>
-    <%= form.submit "Create Task" %>
-  </div>
-<% end %>
-
-<%= link_to "Back to tasks", tasks_path %>
+</div>
