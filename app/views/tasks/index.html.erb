@@ -1,0 +1,18 @@
+<h1>Tasks</h1>
+
+<%= link_to "Add New Task", new_task_path %>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <%= check_box_tag "task_#{task.id}", nil, task.completed %>
+      <%= link_to task.title, task_path(task) %> - <%= task.details %>
+      <% if task.completed %>
+        <span>(Completed)</span>
+      <% else %>
+        <span>(Not completed)</span>
+      <% end %>
+      <%= link_to "Edit", edit_task_path(task) %>
+    <%= link_to "Delete", task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this task?" } %>
+  <% end %>
+</ul>
